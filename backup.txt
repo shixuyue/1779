@@ -1,0 +1,9 @@
+ if (lastdata>=cpuub) {
+                 var ratio = lastdata / cpuub;
+                 ratio = Math.ceil(ratio);
+                 for (i = 0; i <= ratio*size; i++) {
+                     createec2();
+                 }
+             }
+
+

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+
+<html>
+<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+<style>
+        h1{
+            color: green;
+        }
+
+        input[type=submit]{
+            background-color: #4CAF50;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: None;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        input[type=submit]:hover{
+            background-color: #45a049;
+        }
+
+        body{
+            border-radius: 5px;
+            background-color: #c6f2bc;
+            padding: 20px 20px 200px 200px;
+        }
+
+        </style>
+<body>
+    <form action='/' method='get'>
+        <input type='submit' value='Back' />
+    </form>
+
+    <table border="1">
+        <tr><td>ID</td><td>aa</td></tr>
+        <tr><td>Image AMI ID</td><td> bb</td></tr>
+        <tr><td>Key Pair </td><td> cc</td></tr>
+        <tr><td>Public IP Address</td><td>dd</td></tr>
+        <tr><td>State</td><td>ee</td></tr>
+    </table>
+
+
+    <h2>CPU</h2>
+
+    <div id="cpu_plot" style="width:300px;height:150px"></div>
+
+    <h2>Network In</h2>
+
+    <div id="net_in_plot" style="width:300px;height:150px"></div>
+
+
+    <h2>Network Out</h2>
+
+    <div id="net_out_plot" style="width:300px;height:150px"></div>
+</body>
+</html>
+<script type="text/javascript" src='../public/javascripts/askingforresponse.js'></script>
+<script src="https://canvasjs.com/assets/script/jquery.canvasjs.min.js"></script>

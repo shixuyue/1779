@@ -1,0 +1,48 @@
+<style>
+        h1{
+            color: green;
+        }
+
+        input[type=submit]{
+            background-color: #4CAF50;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: None;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        input[type=submit]:hover{
+            background-color: #45a049;
+        }
+
+        body{
+            border-radius: 5px;
+            background-color: #f2f2f2;
+            padding: 20px 20px 50px 50px;
+        }
+</style>
+    <form action='/s3list' method='get'>
+        <input type='submit' value='Back' />
+    </form>
+<!--
+    <form action='{{url_for("s3_upload",id=id)}}' method='post' enctype='multipart/form-data' onsubmit="return validateForm()">
+        <input type='file' id='new_file' name='new_file' accept='application/pdf'>
+        <input type="submit" value="Upload New File" />
+    </form>
+-->
+    <table border="1">
+        <thead>
+            <th>Name</th>
+            <th>Size</th>
+            <th>Last Modified</th>
+        </thead>
+        <% for (var i=0;i<Key.length;i++){%>
+        <tr>
+            <td><%=Key[i]%></td>
+            <td><%=Size[i]%></td>
+            <td><%=LastModified[i]%></td>
+        </tr>
+        <%}%>
+    </table>

@@ -1,0 +1,46 @@
+
+<style>
+    h1{
+            color: green;
+        }
+
+        input[type=submit]{
+            background-color: #4CAF50;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: None;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        input[type=submit]:hover{
+            background-color: #45a049;
+        }
+
+        body{
+            border-radius: 5px;
+            background-color: #f2f2f2;
+            padding: 20px 20px 50px 50px;
+        }
+</style>
+
+    <table border="1">
+    <thead>
+       <th>Name</th>
+       <th>Creation Time</th>
+    </thead>
+
+        <% for (var i = 0; i< bucketname.length;i++){ %>
+        <tr>
+            <td><%= bucketname[i]%></td>
+            <td><%= createdate[i]%></td>
+            <td>
+                <form action="/s3view" method='post' onsubmit="alert(<%= bucketname[i]%>)">
+                    <input type="hidden" value="<%=bucketname[i]%>" name="bucketname">
+                    <input type='submit' value='Details' />
+                </form>
+            </td>
+        </tr>
+        <%}%>
+    </table>

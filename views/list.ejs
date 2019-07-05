@@ -1,0 +1,100 @@
+<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+<html>
+<style>
+        h1{
+            color: green;
+        }
+
+        input[type=submit]{
+            background-color: #4CAF50;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: None;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        input[type=submit]:hover{
+            background-color: #45a049;
+        }
+
+        body{
+            border-radius: 5px;
+            background-color: #f2f2f2;
+            padding: 20px 20px 50px 50px;
+        }
+
+        #tuna{
+            position: fixed;
+            top: 50px;
+            right: 20px;
+        }
+
+        </style>
+    <div id="tuna">
+        <form action="/destroyS3" method='post' onsubmit='return confirm("Are you sure?")'>
+            <input type='submit' value='Empty Database and S3' />
+        </form>
+    </div>
+
+    <div>
+        <form onsubmit="window.location='/autoscaling'; return false">
+            <input type="submit" value="Set Auto-Scaling Parameters"/>
+        </form>
+    </div>
+
+    <table border="1">
+            <tr>
+            <td>Upper Bound Threshold</td>
+            <td><%= ub%></td>
+            </tr>
+            <tr>
+            <td>Lower Bound Threshold</td>
+            <td><%= lb%></td>
+            </tr>
+            <tr>
+            <td>Expand Ratio</td>
+            <td><%= ER%></td>
+            </tr>
+            <tr>
+            <td>Shrink Ratio</td>
+            <td><%= SR%></td>
+            </tr>
+    </table>
+    <br>
+    <form action="/createec2" method="post" onsubmit="return confirm('Are you sure? It costs money')">
+        <input type="submit" value="New">
+    </form>
+
+    <table border="1">
+    <thead>
+       <th>ID</th>
+       <th>Type</th>
+       <th>Availability Zone</th>
+    </thead>
+    <% for (var i=0; i<InstanceIds.length;i++){ %>
+        <tr>
+            <td><%= InstanceIds[i] %></td>
+
+            <td>t2.small</td>
+            <td><%= AZ[i] %></td>
+            <td>
+
+             <input type='button' value='Details' onclick="window.location.href='/view?id=<%=InstanceIds[i] %>'"/>
+
+
+            </td>
+            <td>
+                <form action="/ec2destroy" method='post' onsubmit="return confirm('Are you fucking sure?')">
+                    <input type='hidden' value="<%= InstanceIds[i]%>" name="Id">
+                    <input type='submit' value='Destroy' >
+                </form>
+            </td>
+        </tr>
+    <% } %>
+    </table>
+
+</html>
+<script type='text/javascript' src="../public/javascripts/test.js"></script>
+
